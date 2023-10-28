@@ -76,20 +76,22 @@ export default function SettingAction() {
                 }}
               />
             </SettingItem>
-            <SettingItem icon="i-carbon:api" label="OpenAI Key">
-              <input
-                type="password"
-                value={store.globalSettings.APIKey}
-                class="input-box"
-                onInput={e => {
-                  setStore(
-                    "globalSettings",
-                    "APIKey",
-                    (e.target as HTMLInputElement).value
-                  )
-                }}
-              />
-            </SettingItem>
+            {
+            // <SettingItem icon="i-carbon:api" label="OpenAI Key">
+            //   <input
+            //     type="password"
+            //     value={store.globalSettings.APIKey}
+            //     class="input-box"
+            //     onInput={e => {
+            //       setStore(
+            //         "globalSettings",
+            //         "APIKey",
+            //         (e.target as HTMLInputElement).value
+            //       )
+            //     }}
+            //   />
+            // </SettingItem>
+            }
             <SettingItem icon="i-carbon:keyboard" label="Enter 键发送消息">
               <SwitchButton
                 checked={store.globalSettings.enterToSend}

@@ -68,22 +68,22 @@ export async function POST({ request }: APIEvent) {
     if (!messages?.length) {
       throw new Error("没有输入任何文字。")
     } else {
-      const content = messages.at(-1)!.content.trim()
-      if (content.startsWith("查询填写的 Key 的余额")) {
-        if (key !== localKey) {
-          const billings = await Promise.all(
-            splitKeys(key).map(k => fetchBilling(k))
-          )
-          return new Response(await genBillingsTable(billings))
-        } else {
-          throw new Error("没有填写 OpenAI API key，不会查询内置的 Key。")
-        }
-      } else if (content.startsWith("sk-")) {
-        const billings = await Promise.all(
-          splitKeys(content).map(k => fetchBilling(k))
-        )
-        return new Response(await genBillingsTable(billings))
-      }
+      // const content = messages.at(-1)!.content.trim()
+      // if (content.startsWith("查询填写的 Key 的余额")) {
+      //   if (key !== localKey) {
+      //     const billings = await Promise.all(
+      //       splitKeys(key).map(k => fetchBilling(k))
+      //     )
+      //     return new Response(await genBillingsTable(billings))
+      //   } else {
+      //     throw new Error("没有填写 OpenAI API key，不会查询内置的 Key。")
+      //   }
+      // } else if (content.startsWith("sk-")) {
+      //   const billings = await Promise.all(
+      //     splitKeys(content).map(k => fetchBilling(k))
+      //   )
+      //   return new Response(await genBillingsTable(billings))
+      // }
     }
 
     // const apiKey = randomKey(splitKeys(key))
