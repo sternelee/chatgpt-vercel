@@ -57,7 +57,7 @@ export async function POST({ request }: APIEvent) {
       key?: string
       temperature: number
       password?: string
-      model: Model
+      model: 'openai/' + Model
     } = await request.json()
     const { messages, key = localKey, temperature, password, model } = body
 
