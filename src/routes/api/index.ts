@@ -57,7 +57,7 @@ export async function POST({ request }: APIEvent) {
       key?: string
       temperature: number
       password?: string
-      model: 'openai/' + Model
+      model: Model
     } = await request.json()
     const { messages, key = localKey, temperature, password, model } = body
 
@@ -99,12 +99,13 @@ export async function POST({ request }: APIEvent) {
       {
         headers: {
           "Content-Type": "application/json",
+          "HTTP-Referer": "https://chat.leeapp.cn/",
           Authorization: `Bearer ${apiKey}`
         },
         timeout,
         method: "POST",
         body: JSON.stringify({
-          model,
+          model: 'openai/' + model,
           messages: messages.map(k => ({ role: k.role, content: k.content })),
           temperature,
           stream: true
