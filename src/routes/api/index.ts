@@ -85,7 +85,7 @@ export async function POST({ request }: APIEvent) {
         timeout,
         method: "POST",
         body: JSON.stringify({
-          model: "openai/" + model,
+          model,
           messages: messages.map(k => ({ role: k.role, content: k.content })),
           temperature,
           stream: true

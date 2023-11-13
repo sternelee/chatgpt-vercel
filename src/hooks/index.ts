@@ -37,3 +37,22 @@ export function clickOutside(el: Element, accessor: Accessor<any>) {
 
   onCleanup(() => document.body.removeEventListener("click", onClick))
 }
+
+export function observerEl(options: {
+  target: HTMLElement
+  root?: HTMLElement | null
+  threshold?: number
+  show: () => any
+}) {
+  const { target, root = null, threshold = 0.01, show = () => null } = options
+  const io = new window.IntersectionObserver(
+    entries => {
+      if (entries[0].intersectionRatio >= threshold) {
+        show()
+      }
+    },
+    { threshold: [threshold], root }
+  )
+  io.observe(target)
+  onCleanup(() => io.disconnect())
+}

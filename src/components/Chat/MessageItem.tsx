@@ -132,7 +132,7 @@ export default function MessageItem(props: Props) {
           </Show>
         </div>
         <div
-          class="message prose prose-slate dark:prose-invert dark:text-slate break-words overflow-hidden"
+          class="message prose prose-slate break-all dark:prose-invert dark:text-slate break-words overflow-hidden"
           innerHTML={renderedMarkdown()
             .replace(
               /\s*Vercel\s*/g,

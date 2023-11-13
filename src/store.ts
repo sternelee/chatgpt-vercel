@@ -7,6 +7,7 @@ import { Fzf } from "fzf"
 import type { Model, Option, SimpleModel } from "~/types"
 import { countTokensInWorker } from "~/wokers"
 import { throttle } from "@solid-primitives/scheduled"
+import Models from "./hooks/models.json"
 
 let globalSettings = { ...defaultEnv.CLIENT_GLOBAL_SETTINGS }
 let _ = import.meta.env.CLIENT_GLOBAL_SETTINGS
@@ -94,6 +95,14 @@ const modelFee = {
     output: number
   }
 }
+
+Models.data.forEach(v => {
+  // @ts-ignore
+  modelFee[v.id] = {
+    input: v.pricing.prompt,
+    output: v.pricing.completion
+  }
+})
 
 function Store() {
   const [store, setStore] = createStore({
@@ -185,12 +194,13 @@ function Store() {
 
   const currentModel = createMemo(() => {
     const model = store.sessionSettings.model
-    const tk = (store.inputContentToken + store.contextToken) / 1000
-    if (model === "gpt-3.5") {
-      return models["gpt-3.5"][tk < 3.5 ? "4k" : "16k"]
-    } else {
-      return models["gpt-4"][tk < 7 ? "8k" : "32k"]
-    }
+    return model
+    // const tk = (store.inputContentToken + store.contextToken) / 1000
+    // if (model === "gpt-3.5") {
+    //   return models["gpt-3.5"][tk < 3.5 ? "4k" : "16k"]
+    // } else {
+    //   return models["gpt-4"][tk < 7 ? "8k" : "32k"]
+    // }
   })
 
   const inputContentToken$ = createMemo(() =>
@@ -293,5 +303,8 @@ function countTokensDollar(
   io: "input" | "output"
 ) {
   const tk = tokens / 1000
+  console.log("model:", model, io, tokens)
+  console.log("modelFee", modelFee)
+  // @ts-ignore
   return modelFee[model][io] * tk
 }

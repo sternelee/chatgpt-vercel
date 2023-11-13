@@ -16,6 +16,7 @@ import {
 } from "~/utils"
 import { Selector, Switch as SwitchButton } from "../Common"
 import { useNavigate } from "solid-start"
+import Models from "../../hooks/models.json"
 
 export const [actionState, setActionState] = createStore({
   showSetting: "none" as "none" | "global" | "session",
@@ -77,20 +78,20 @@ export default function SettingAction() {
               />
             </SettingItem>
             {
-            // <SettingItem icon="i-carbon:api" label="OpenAI Key">
-            //   <input
-            //     type="password"
-            //     value={store.globalSettings.APIKey}
-            //     class="input-box"
-            //     onInput={e => {
-            //       setStore(
-            //         "globalSettings",
-            //         "APIKey",
-            //         (e.target as HTMLInputElement).value
-            //       )
-            //     }}
-            //   />
-            // </SettingItem>
+              <SettingItem icon="i-carbon:api" label="OpenRouter Key">
+                <input
+                  type="password"
+                  value={store.globalSettings.APIKey}
+                  class="input-box"
+                  onInput={e => {
+                    setStore(
+                      "globalSettings",
+                      "APIKey",
+                      (e.target as HTMLInputElement).value
+                    )
+                  }}
+                />
+              </SettingItem>
             }
             <SettingItem icon="i-carbon:keyboard" label="Enter 键发送消息">
               <SwitchButton
@@ -130,7 +131,7 @@ export default function SettingAction() {
             </Show>
             <SettingItem
               icon="i-carbon:machine-learning-model"
-              label="OpenAI 模型"
+              label="OpenRouter 模型"
             >
               <Selector
                 class="max-w-150px"
@@ -142,16 +143,7 @@ export default function SettingAction() {
                     (e.target as HTMLSelectElement).value as SimpleModel
                   )
                 }}
-                options={[
-                  {
-                    value: "gpt-3.5",
-                    label: "gpt-3.5(auto)"
-                  },
-                  {
-                    value: "gpt-4",
-                    label: "gpt-4(auto)"
-                  }
-                ]}
+                options={Models.data.map(v => ({ value: v.id, label: v.name }))}
               />
             </SettingItem>
             <SettingItem icon="i-carbon:data-enrichment" label="思维发散程度">
