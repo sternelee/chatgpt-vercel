@@ -303,8 +303,6 @@ function countTokensDollar(
   io: "input" | "output"
 ) {
   const tk = tokens / 1000
-  console.log("model:", model, io, tokens)
-  console.log("modelFee", modelFee)
   // @ts-ignore
   return modelFee[model][io] * tk
 }
