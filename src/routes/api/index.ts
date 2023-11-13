@@ -1,7 +1,7 @@
 import type { ParsedEvent, ReconnectInterval } from "eventsource-parser"
 import { createParser } from "eventsource-parser"
 import type { ChatMessage, Model } from "~/types"
-import { splitKeys, randomKey, fetchWithTimeout } from "~/utils"
+import { fetchWithTimeout } from "~/utils"
 import { defaultEnv } from "~/env"
 import type { APIEvent } from "solid-start/api"
 
@@ -67,29 +67,9 @@ export async function POST({ request }: APIEvent) {
 
     if (!messages?.length) {
       throw new Error("没有输入任何文字。")
-    } else {
-      // const content = messages.at(-1)!.content.trim()
-      // if (content.startsWith("查询填写的 Key 的余额")) {
-      //   if (key !== localKey) {
-      //     const billings = await Promise.all(
-      //       splitKeys(key).map(k => fetchBilling(k))
-      //     )
-      //     return new Response(await genBillingsTable(billings))
-      //   } else {
-      //     throw new Error("没有填写 OpenAI API key，不会查询内置的 Key。")
-      //   }
-      // } else if (content.startsWith("sk-")) {
-      //   const billings = await Promise.all(
-      //     splitKeys(content).map(k => fetchBilling(k))
-      //   )
-      //   return new Response(await genBillingsTable(billings))
-      // }
     }
 
-    // const apiKey = randomKey(splitKeys(key))
-    const apiKey = key
-
-    if (!apiKey) throw new Error("没有填写 OpenAI API key，或者 key 填写错误。")
+    if (!key) throw new Error("没有填写 OpenAI API key，或者 key 填写错误。")
 
     const encoder = new TextEncoder()
     const decoder = new TextDecoder()
@@ -100,12 +80,12 @@ export async function POST({ request }: APIEvent) {
         headers: {
           "Content-Type": "application/json",
           "HTTP-Referer": "https://chat.leeapp.cn/",
-          Authorization: `Bearer ${apiKey}`
+          Authorization: `Bearer ${key}`
         },
         timeout,
         method: "POST",
         body: JSON.stringify({
-          model: 'openai/' + model,
+          model: "openai/" + model,
           messages: messages.map(k => ({ role: k.role, content: k.content })),
           temperature,
           stream: true
