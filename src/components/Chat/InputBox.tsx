@@ -10,7 +10,7 @@ import {
 } from "solid-js"
 import { FZFData, RootStore, loadSession } from "~/store"
 import type { Option } from "~/types"
-import { scrollToBottom } from "~/utils"
+import { scrollToBottom, blobToBase64 } from "~/utils"
 import SettingAction, { actionState, type FakeRoleUnion } from "./SettingAction"
 import SlashSelector from "./SlashSelector"
 import { useNavigate } from "solid-start"
@@ -38,13 +38,37 @@ export default function ({
   onMount(() => {
     import("~/utils/parse").then(({ parsePrompts }) => {
       FZFData.promptOptions = parsePrompts().map(
-        k => ({ title: k.desc, desc: k.detail } as Option)
+        k => ({ title: k.desc, desc: k.detail }) as Option
       )
       FZFData.fzfPrompts = new Fzf(FZFData.promptOptions, {
         selector: k => `${k.title}\n${k.desc}`
       })
     })
     store.inputRef?.focus()
+    console.log("store:", store)
+    document.addEventListener("paste", async ev => {
+      // 支持图片的model
+      if (
+        store.currentModel.indexOf("vision") === -1 &&
+        !store.sessionSettings.continuousDialogue
+      )
+        return
+      const items = ev.clipboardData && ev.clipboardData.items
+      let file = null
+      if (items && items.length) {
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].type.indexOf("image") !== -1) {
+            file = items[i].getAsFile()
+            break
+          }
+        }
+      }
+      if (file) {
+        const img = await blobToBase64(file)
+        console.log(img)
+        setStore("inputImage", img)
+      }
+    })
   })
 
   function setSuitableheight() {
@@ -175,6 +199,17 @@ export default function ({
             select={selectOption}
           ></SlashSelector>
           <div class="flex items-end relative">
+            <Show when={store.inputImage}>
+              <img
+                src={store.inputImage}
+                onClick={() => setStore("inputImage", "")}
+                style={{
+                  width: height() + "px",
+                  height: height() + "px",
+                  "margin-right": "6px"
+                }}
+              />
+            </Show>
             <textarea
               ref={el => setStore("inputRef", el)}
               id="input"

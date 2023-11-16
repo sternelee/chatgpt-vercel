@@ -110,6 +110,7 @@ function Store() {
     globalSettings,
     sessionSettings,
     inputContent: "",
+    inputImage: "",
     messageList: [] as ChatMessage[],
     currentAssistantMessage: "",
     contextToken: 0,

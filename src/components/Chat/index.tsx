@@ -112,6 +112,21 @@ export default function () {
       ])
     } else {
       try {
+        const content = store.inputImage
+          ? [
+              {
+                type: "image_url",
+                image_url: {
+                  url: store.inputImage,
+                  detail: "low"
+                }
+              },
+              {
+                type: "text",
+                text: inputValue
+              }
+            ]
+          : inputValue
         setStore("messageList", k => [
           ...k,
           {
@@ -127,16 +142,18 @@ export default function () {
           )
         }
         setStore("loading", true)
+        setStore("inputImage", "")
         controller = new AbortController()
         // 在关闭连续对话时，有效上下文只包含了锁定的对话。
         await fetchGPT(
+          // @ts-ignore
           store.sessionSettings.continuousDialogue
             ? store.validContext
             : [
                 ...store.validContext,
                 {
                   role: "user",
-                  content: inputValue
+                  content
                 }
               ]
         )
