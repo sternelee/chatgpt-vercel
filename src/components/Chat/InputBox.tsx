@@ -45,7 +45,6 @@ export default function ({
       })
     })
     store.inputRef?.focus()
-    console.log("store:", store)
     document.addEventListener("paste", async ev => {
       // 支持图片的model
       if (

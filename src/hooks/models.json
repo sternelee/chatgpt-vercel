@@ -7,13 +7,13 @@
         "prompt": -1,
         "completion": -1
       },
-      "context_length": 32767,
+      "context_length": 128000,
       "architecture": {
         "tokenizer": "Router",
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 32767
+        "max_completion_tokens": null
       },
       "per_request_limits": null
     },
@@ -30,7 +30,7 @@
         "instruct_type": "llama2"
       },
       "top_provider": {
-        "max_completion_tokens": 8192
+        "max_completion_tokens": null
       },
       "per_request_limits": {
         "prompt_tokens": "Infinity",
@@ -50,7 +50,7 @@
         "instruct_type": "zephyr"
       },
       "top_provider": {
-        "max_completion_tokens": 4096
+        "max_completion_tokens": null
       },
       "per_request_limits": {
         "prompt_tokens": "Infinity",
@@ -78,6 +78,146 @@
       }
     },
     {
+      "id": "nousresearch/nous-hermes-llama2-13b",
+      "name": "Nous: Hermes 13B (beta)",
+      "pricing": {
+        "prompt": "1.5e-7",
+        "completion": "1.5e-7"
+      },
+      "context_length": 4096,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": "alpaca"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "281749618",
+        "completion_tokens": "281749618"
+      }
+    },
+    {
+      "id": "meta-llama/codellama-34b-instruct",
+      "name": "Meta: CodeLlama 34B Instruct (beta)",
+      "pricing": {
+        "prompt": "4e-7",
+        "completion": "4e-7"
+      },
+      "context_length": 8192,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": "llama2"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "105656106",
+        "completion_tokens": "105656106"
+      }
+    },
+    {
+      "id": "phind/phind-codellama-34b",
+      "name": "Phind: CodeLlama 34B v2 (beta)",
+      "pricing": {
+        "prompt": "4e-7",
+        "completion": "4e-7"
+      },
+      "context_length": 4096,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": "alpaca"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "105656106",
+        "completion_tokens": "105656106"
+      }
+    },
+    {
+      "id": "haotian-liu/llava-13b",
+      "name": "Llava 13B (beta)",
+      "pricing": {
+        "prompt": "0.000005",
+        "completion": "0.000005"
+      },
+      "context_length": 2048,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": null
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "8452488",
+        "completion_tokens": "8452488"
+      }
+    },
+    {
+      "id": "meta-llama/llama-2-13b-chat",
+      "name": "Meta: Llama v2 13B Chat (beta)",
+      "pricing": {
+        "prompt": "2.345e-7",
+        "completion": "2.345e-7"
+      },
+      "context_length": 4096,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": "llama2"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "180223636",
+        "completion_tokens": "180223636"
+      }
+    },
+    {
+      "id": "alpindale/goliath-120b",
+      "name": "Goliath 120B (beta)",
+      "pricing": {
+        "prompt": "0.00000703125",
+        "completion": "0.00000703125"
+      },
+      "context_length": 6144,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": "vicuna"
+      },
+      "top_provider": {
+        "max_completion_tokens": 300
+      },
+      "per_request_limits": {
+        "prompt_tokens": "6010658",
+        "completion_tokens": "6010658"
+      }
+    },
+    {
+      "id": "lizpreciatior/lzlv-70b-fp16-hf",
+      "name": "lzlv 70B (beta)",
+      "pricing": {
+        "prompt": "5.6e-7",
+        "completion": "7.6e-7"
+      },
+      "context_length": 4096,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": "vicuna"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "75468647",
+        "completion_tokens": "55608477"
+      }
+    },
+    {
       "id": "openai/gpt-3.5-turbo",
       "name": "OpenAI: GPT-3.5 Turbo",
       "pricing": {
@@ -90,11 +230,11 @@
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 4095
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "37965925",
-        "completion_tokens": "18982962"
+        "prompt_tokens": "42262442",
+        "completion_tokens": "21131221"
       }
     },
     {
@@ -113,8 +253,8 @@
         "max_completion_tokens": 4096
       },
       "per_request_limits": {
-        "prompt_tokens": "37965925",
-        "completion_tokens": "18982962"
+        "prompt_tokens": "42262442",
+        "completion_tokens": "21131221"
       }
     },
     {
@@ -130,11 +270,11 @@
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 4095
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "37965925",
-        "completion_tokens": "18982962"
+        "prompt_tokens": "42262442",
+        "completion_tokens": "21131221"
       }
     },
     {
@@ -150,11 +290,11 @@
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 16385
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "12655308",
-        "completion_tokens": "9491481"
+        "prompt_tokens": "14087480",
+        "completion_tokens": "10565610"
       }
     },
     {
@@ -173,8 +313,8 @@
         "max_completion_tokens": 4096
       },
       "per_request_limits": {
-        "prompt_tokens": "3796592",
-        "completion_tokens": "1265530"
+        "prompt_tokens": "4226244",
+        "completion_tokens": "1408748"
       }
     },
     {
@@ -190,11 +330,11 @@
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 8191
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "1265530",
-        "completion_tokens": "632765"
+        "prompt_tokens": "1408748",
+        "completion_tokens": "704374"
       }
     },
     {
@@ -210,11 +350,11 @@
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 8191
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "1265530",
-        "completion_tokens": "632765"
+        "prompt_tokens": "1408748",
+        "completion_tokens": "704374"
       }
     },
     {
@@ -230,11 +370,11 @@
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 32767
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "632765",
-        "completion_tokens": "316382"
+        "prompt_tokens": "704374",
+        "completion_tokens": "352187"
       }
     },
     {
@@ -250,11 +390,11 @@
         "instruct_type": null
       },
       "top_provider": {
-        "max_completion_tokens": 32767
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "632765",
-        "completion_tokens": "316382"
+        "prompt_tokens": "704374",
+        "completion_tokens": "352187"
       }
     },
     {
@@ -273,8 +413,8 @@
         "max_completion_tokens": 4096
       },
       "per_request_limits": {
-        "prompt_tokens": "3796592",
-        "completion_tokens": "1265530"
+        "prompt_tokens": "4226244",
+        "completion_tokens": "1408748"
       }
     },
     {
@@ -290,11 +430,11 @@
         "instruct_type": "gpt"
       },
       "top_provider": {
-        "max_completion_tokens": 4095
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "1898296",
-        "completion_tokens": "1898296"
+        "prompt_tokens": "2113122",
+        "completion_tokens": "2113122"
       }
     },
     {
@@ -310,11 +450,11 @@
         "instruct_type": "gpt"
       },
       "top_provider": {
-        "max_completion_tokens": 4095
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "25310616",
-        "completion_tokens": "18982962"
+        "prompt_tokens": "28174961",
+        "completion_tokens": "21131221"
       }
     },
     {
@@ -333,8 +473,8 @@
         "max_completion_tokens": 1024
       },
       "per_request_limits": {
-        "prompt_tokens": "75931850",
-        "completion_tokens": "75931850"
+        "prompt_tokens": "84524885",
+        "completion_tokens": "84524885"
       }
     },
     {
@@ -353,8 +493,8 @@
         "max_completion_tokens": 1024
       },
       "per_request_limits": {
-        "prompt_tokens": "75931850",
-        "completion_tokens": "75931850"
+        "prompt_tokens": "84524885",
+        "completion_tokens": "84524885"
       }
     },
     {
@@ -373,8 +513,8 @@
         "max_completion_tokens": 8192
       },
       "per_request_limits": {
-        "prompt_tokens": "75931850",
-        "completion_tokens": "75931850"
+        "prompt_tokens": "84524885",
+        "completion_tokens": "84524885"
       }
     },
     {
@@ -393,28 +533,8 @@
         "max_completion_tokens": 8192
       },
       "per_request_limits": {
-        "prompt_tokens": "75931850",
-        "completion_tokens": "75931850"
-      }
-    },
-    {
-      "id": "meta-llama/llama-2-13b-chat",
-      "name": "Meta: Llama v2 13B Chat (beta)",
-      "pricing": {
-        "prompt": "2.345e-7",
-        "completion": "2.345e-7"
-      },
-      "context_length": 4096,
-      "architecture": {
-        "tokenizer": "Llama2",
-        "instruct_type": "llama2"
-      },
-      "top_provider": {
-        "max_completion_tokens": 4096
-      },
-      "per_request_limits": {
-        "prompt_tokens": "161901599",
-        "completion_tokens": "161901599"
+        "prompt_tokens": "84524885",
+        "completion_tokens": "84524885"
       }
     },
     {
@@ -430,31 +550,11 @@
         "instruct_type": "llama2"
       },
       "top_provider": {
-        "max_completion_tokens": 4096
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "54237035",
-        "completion_tokens": "39964131"
-      }
-    },
-    {
-      "id": "nousresearch/nous-hermes-llama2-13b",
-      "name": "Nous: Hermes 13B (beta)",
-      "pricing": {
-        "prompt": "1.5e-7",
-        "completion": "1.5e-7"
-      },
-      "context_length": 4096,
-      "architecture": {
-        "tokenizer": "Llama2",
-        "instruct_type": "alpaca"
-      },
-      "top_provider": {
-        "max_completion_tokens": 4096
-      },
-      "per_request_limits": {
-        "prompt_tokens": "253106167",
-        "completion_tokens": "253106167"
+        "prompt_tokens": "60374918",
+        "completion_tokens": "44486781"
       }
     },
     {
@@ -470,51 +570,31 @@
         "instruct_type": "alpaca"
       },
       "top_provider": {
-        "max_completion_tokens": 4096
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "42184361",
-        "completion_tokens": "42184361"
+        "prompt_tokens": "46958269",
+        "completion_tokens": "46958269"
       }
     },
     {
-      "id": "meta-llama/codellama-34b-instruct",
-      "name": "Meta: CodeLlama 34B Instruct (beta)",
+      "id": "nousresearch/nous-capybara-34b",
+      "name": "Nous: Capybara 34B (beta)",
       "pricing": {
-        "prompt": "4e-7",
-        "completion": "4e-7"
+        "prompt": "0.00002",
+        "completion": "0.00002"
       },
-      "context_length": 8192,
+      "context_length": 32000,
       "architecture": {
         "tokenizer": "Llama2",
-        "instruct_type": "llama2"
+        "instruct_type": "vicuna"
       },
       "top_provider": {
-        "max_completion_tokens": 8192
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "94914812",
-        "completion_tokens": "94914812"
-      }
-    },
-    {
-      "id": "phind/phind-codellama-34b",
-      "name": "Phind: CodeLlama 34B v2 (beta)",
-      "pricing": {
-        "prompt": "4e-7",
-        "completion": "4e-7"
-      },
-      "context_length": 4096,
-      "architecture": {
-        "tokenizer": "Llama2",
-        "instruct_type": "alpaca"
-      },
-      "top_provider": {
-        "max_completion_tokens": 4096
-      },
-      "per_request_limits": {
-        "prompt_tokens": "94914812",
-        "completion_tokens": "94914812"
+        "prompt_tokens": "2113122",
+        "completion_tokens": "2113122"
       }
     },
     {
@@ -530,11 +610,11 @@
         "instruct_type": "airoboros"
       },
       "top_provider": {
-        "max_completion_tokens": 4096
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "54237035",
-        "completion_tokens": "39964131"
+        "prompt_tokens": "60374918",
+        "completion_tokens": "44486781"
       }
     },
     {
@@ -547,14 +627,14 @@
       "context_length": 8192,
       "architecture": {
         "tokenizer": "Llama2",
-        "instruct_type": "airoboros"
+        "instruct_type": "vicuna"
       },
       "top_provider": {
         "max_completion_tokens": 300
       },
       "per_request_limits": {
-        "prompt_tokens": "4049698",
-        "completion_tokens": "4049698"
+        "prompt_tokens": "4507993",
+        "completion_tokens": "4507993"
       }
     },
     {
@@ -570,16 +650,16 @@
         "instruct_type": "gpt"
       },
       "top_provider": {
-        "max_completion_tokens": 8192
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "189829625",
-        "completion_tokens": "189829625"
+        "prompt_tokens": "211312213",
+        "completion_tokens": "211312213"
       }
     },
     {
       "id": "teknium/openhermes-2-mistral-7b",
-      "name": "Mistral OpenHermes 7B (beta)",
+      "name": "OpenHermes Mistral 7B (beta)",
       "pricing": {
         "prompt": "2e-7",
         "completion": "2e-7"
@@ -590,11 +670,31 @@
         "instruct_type": "gpt"
       },
       "top_provider": {
-        "max_completion_tokens": 4096
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "189829625",
-        "completion_tokens": "189829625"
+        "prompt_tokens": "211312213",
+        "completion_tokens": "211312213"
+      }
+    },
+    {
+      "id": "teknium/openhermes-2.5-mistral-7b",
+      "name": "OpenHermes Mistral 7B 2.5 (beta)",
+      "pricing": {
+        "prompt": "2e-7",
+        "completion": "2e-7"
+      },
+      "context_length": 4096,
+      "architecture": {
+        "tokenizer": "Mistral",
+        "instruct_type": "gpt"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "211312213",
+        "completion_tokens": "211312213"
       }
     },
     {
@@ -613,8 +713,8 @@
         "max_completion_tokens": 250
       },
       "per_request_limits": {
-        "prompt_tokens": "33747489",
-        "completion_tokens": "33747489"
+        "prompt_tokens": "37566615",
+        "completion_tokens": "37566615"
       }
     },
     {
@@ -633,28 +733,8 @@
         "max_completion_tokens": 250
       },
       "per_request_limits": {
-        "prompt_tokens": "33747489",
-        "completion_tokens": "33747489"
-      }
-    },
-    {
-      "id": "gryphe/mythomax-l2-13b",
-      "name": "MythoMax 13B",
-      "pricing": {
-        "prompt": "6e-7",
-        "completion": "6e-7"
-      },
-      "context_length": 4096,
-      "architecture": {
-        "tokenizer": "Llama2",
-        "instruct_type": "alpaca"
-      },
-      "top_provider": {
-        "max_completion_tokens": 4096
-      },
-      "per_request_limits": {
-        "prompt_tokens": "63276541",
-        "completion_tokens": "63276541"
+        "prompt_tokens": "37566615",
+        "completion_tokens": "37566615"
       }
     },
     {
@@ -667,14 +747,14 @@
       "context_length": 8192,
       "architecture": {
         "tokenizer": "Llama2",
-        "instruct_type": "airoboros"
+        "instruct_type": "vicuna"
       },
       "top_provider": {
         "max_completion_tokens": 300
       },
       "per_request_limits": {
-        "prompt_tokens": "4049698",
-        "completion_tokens": "4049698"
+        "prompt_tokens": "4507993",
+        "completion_tokens": "4507993"
       }
     },
     {
@@ -693,56 +773,36 @@
         "max_completion_tokens": 300
       },
       "per_request_limits": {
-        "prompt_tokens": "33747489",
-        "completion_tokens": "33747489"
-      }
-    },
-    {
-      "id": "alpindale/goliath-120b",
-      "name": "Goliath 120B (beta)",
-      "pricing": {
-        "prompt": "0.000005625",
-        "completion": "0.000005625"
-      },
-      "context_length": 6144,
-      "architecture": {
-        "tokenizer": "Llama2",
-        "instruct_type": "airoboros"
-      },
-      "top_provider": {
-        "max_completion_tokens": 300
-      },
-      "per_request_limits": {
-        "prompt_tokens": "6749497",
-        "completion_tokens": "6749497"
-      }
-    },
-    {
-      "id": "lizpreciatior/lzlv-70b-fp16-hf",
-      "name": "lzlv 70B (beta)",
-      "pricing": {
-        "prompt": "7e-7",
-        "completion": "9.5e-7"
-      },
-      "context_length": 4096,
-      "architecture": {
-        "tokenizer": "Llama2",
-        "instruct_type": "airoboros"
-      },
-      "top_provider": {
-        "max_completion_tokens": 4096
-      },
-      "per_request_limits": {
-        "prompt_tokens": "54237035",
-        "completion_tokens": "39964131"
+        "prompt_tokens": "37566615",
+        "completion_tokens": "37566615"
       }
     },
     {
       "id": "anthropic/claude-2",
-      "name": "Anthropic: Claude v2",
+      "name": "Anthropic: Claude v2.1",
       "pricing": {
-        "prompt": "0.00001102",
-        "completion": "0.00003268"
+        "prompt": "0.000008",
+        "completion": "0.000024"
+      },
+      "context_length": 200000,
+      "architecture": {
+        "tokenizer": "Claude",
+        "instruct_type": "claude"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "5282805",
+        "completion_tokens": "1760935"
+      }
+    },
+    {
+      "id": "anthropic/claude-2.0",
+      "name": "Anthropic: Claude v2.0",
+      "pricing": {
+        "prompt": "0.000008",
+        "completion": "0.000024"
       },
       "context_length": 100000,
       "architecture": {
@@ -750,11 +810,11 @@
         "instruct_type": "claude"
       },
       "top_provider": {
-        "max_completion_tokens": 100000
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "3445183",
-        "completion_tokens": "1161748"
+        "prompt_tokens": "5282805",
+        "completion_tokens": "1760935"
       }
     },
     {
@@ -770,19 +830,19 @@
         "instruct_type": "claude"
       },
       "top_provider": {
-        "max_completion_tokens": 100000
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "23291978",
-        "completion_tokens": "6890367"
+        "prompt_tokens": "25927878",
+        "completion_tokens": "7670134"
       }
     },
     {
       "id": "anthropic/claude-v1",
       "name": "Anthropic: Claude v1",
       "pricing": {
-        "prompt": "0.00001102",
-        "completion": "0.00003268"
+        "prompt": "0.000008",
+        "completion": "0.000024"
       },
       "context_length": 9000,
       "architecture": {
@@ -790,19 +850,19 @@
         "instruct_type": "claude"
       },
       "top_provider": {
-        "max_completion_tokens": 9000
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "3445183",
-        "completion_tokens": "1161748"
+        "prompt_tokens": "5282805",
+        "completion_tokens": "1760935"
       }
     },
     {
       "id": "anthropic/claude-1.2",
       "name": "Anthropic: Claude (older v1)",
       "pricing": {
-        "prompt": "0.00001102",
-        "completion": "0.00003268"
+        "prompt": "0.000008",
+        "completion": "0.000024"
       },
       "context_length": 9000,
       "architecture": {
@@ -810,11 +870,11 @@
         "instruct_type": "claude"
       },
       "top_provider": {
-        "max_completion_tokens": 9000
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "3445183",
-        "completion_tokens": "1161748"
+        "prompt_tokens": "5282805",
+        "completion_tokens": "1760935"
       }
     },
     {
@@ -830,19 +890,19 @@
         "instruct_type": "claude"
       },
       "top_provider": {
-        "max_completion_tokens": 100000
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "23291978",
-        "completion_tokens": "6890367"
+        "prompt_tokens": "25927878",
+        "completion_tokens": "7670134"
       }
     },
     {
       "id": "anthropic/claude-v1-100k",
       "name": "Anthropic: Claude 100k v1",
       "pricing": {
-        "prompt": "0.00001102",
-        "completion": "0.00003268"
+        "prompt": "0.000008",
+        "completion": "0.000024"
       },
       "context_length": 100000,
       "architecture": {
@@ -850,11 +910,11 @@
         "instruct_type": "claude"
       },
       "top_provider": {
-        "max_completion_tokens": 100000
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "3445183",
-        "completion_tokens": "1161748"
+        "prompt_tokens": "5282805",
+        "completion_tokens": "1760935"
       }
     },
     {
@@ -870,11 +930,11 @@
         "instruct_type": "claude"
       },
       "top_provider": {
-        "max_completion_tokens": 9000
+        "max_completion_tokens": null
       },
       "per_request_limits": {
-        "prompt_tokens": "23291978",
-        "completion_tokens": "6890367"
+        "prompt_tokens": "25927878",
+        "completion_tokens": "7670134"
       }
     },
     {
@@ -893,8 +953,28 @@
         "max_completion_tokens": 400
       },
       "per_request_limits": {
-        "prompt_tokens": "8436872",
-        "completion_tokens": "8436872"
+        "prompt_tokens": "9391653",
+        "completion_tokens": "9391653"
+      }
+    },
+    {
+      "id": "gryphe/mythomax-l2-13b",
+      "name": "MythoMax 13B",
+      "pricing": {
+        "prompt": "6e-7",
+        "completion": "6e-7"
+      },
+      "context_length": 4096,
+      "architecture": {
+        "tokenizer": "Llama2",
+        "instruct_type": "alpaca"
+      },
+      "top_provider": {
+        "max_completion_tokens": null
+      },
+      "per_request_limits": {
+        "prompt_tokens": "70437404",
+        "completion_tokens": "70437404"
       }
     }
   ]
