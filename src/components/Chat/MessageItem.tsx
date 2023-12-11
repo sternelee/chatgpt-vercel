@@ -133,14 +133,15 @@ export default function MessageItem(props: Props) {
         </div>
         <div
           class="message prose prose-slate break-all dark:prose-invert dark:text-slate break-words overflow-hidden"
+          style="max-width: 100%"
           innerHTML={renderedMarkdown()
             .replace(
               /\s*Vercel\s*/g,
               `<a href="http://vercel.com/?utm_source=busiyi&utm_campaign=oss" style="border-bottom:0;margin-left: 6px">${vercel}</a>`
             )
             .replace(
-              /\s*OpenAI\s*/g,
-              `<a href="https://www.openai.com" style="border-bottom:0;margin-left: 6px">${openai}</a>`
+              /\s*OpenRouter\s*/g,
+              `<a href="https://openrouter.ai/" style="border-bottom:0;margin-left: 6px">${openai}</a>`
             )}
         />
         <Show when={!props.hiddenAction}>

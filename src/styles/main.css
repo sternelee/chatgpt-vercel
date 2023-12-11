@@ -46,7 +46,7 @@ html.dark {
 }
 
 body {
-  max-width: 72ch;
+  /* max-width: 72ch; */
   margin: 0 auto !important;
 }
 
