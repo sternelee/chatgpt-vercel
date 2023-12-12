@@ -1,5 +1,5 @@
 import type { SimpleModel } from "./types"
-import Models from "./hooks/models.json"
+import Models from "~/openrouter.json"
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const MAX_INPUTS: any = {}

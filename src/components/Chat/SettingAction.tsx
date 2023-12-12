@@ -16,7 +16,7 @@ import {
 } from "~/utils"
 import { Selector, Switch as SwitchButton } from "../Common"
 import { useNavigate } from "solid-start"
-import Models from "../../hooks/models.json"
+import Models from "~/openrouter.json"
 
 export const [actionState, setActionState] = createStore({
   showSetting: "none" as "none" | "global" | "session",
@@ -143,7 +143,10 @@ export default function SettingAction() {
                     (e.target as HTMLSelectElement).value as SimpleModel
                   )
                 }}
-                options={Models.data.map(v => ({ value: v.id, label: v.name }))}
+                options={Models.data.map(v => ({
+                  value: v.id,
+                  label: v.name + (v.pricing.prompt === "0" ? "(free)" : "")
+                }))}
               />
             </SettingItem>
             <SettingItem icon="i-carbon:data-enrichment" label="思维发散程度">

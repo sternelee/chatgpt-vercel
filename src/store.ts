@@ -7,7 +7,7 @@ import { Fzf } from "fzf"
 import type { Model, Option, SimpleModel } from "~/types"
 import { countTokensInWorker } from "~/wokers"
 import { throttle } from "@solid-primitives/scheduled"
-import Models from "./hooks/models.json"
+import Models from "~/openrouter.json"
 
 let globalSettings = { ...defaultEnv.CLIENT_GLOBAL_SETTINGS }
 let _ = import.meta.env.CLIENT_GLOBAL_SETTINGS
@@ -57,39 +57,7 @@ export const defaultMessage: ChatMessage = {
   type: "default"
 }
 
-const models = {
-  "gpt-3.5": {
-    "4k": "gpt-3.5-turbo-0613",
-    "16k": "gpt-3.5-turbo-16k-0613"
-  },
-  "gpt-4": {
-    "8k": "gpt-4-0613",
-    "32k": "gpt-4-32k-0613"
-  }
-} satisfies {
-  [k in SimpleModel]: {
-    [k: string]: Model
-  }
-}
-
-const modelFee = {
-  "gpt-3.5-turbo-0613": {
-    input: 0.0015,
-    output: 0.002
-  },
-  "gpt-3.5-turbo-16k-0613": {
-    input: 0.003,
-    output: 0.004
-  },
-  "gpt-4-0613": {
-    input: 0.03,
-    output: 0.06
-  },
-  "gpt-4-32k-0613": {
-    input: 0.06,
-    output: 0.12
-  }
-} satisfies {
+const models = {} satisfies {
   [key in Model]: {
     input: number
     output: number
@@ -98,7 +66,7 @@ const modelFee = {
 
 Models.data.forEach(v => {
   // @ts-ignore
-  modelFee[v.id] = {
+  models[v.id + `${v.pricing.prompt === 0 ? "(free)" : ""}`] = {
     input: v.pricing.prompt,
     output: v.pricing.completion
   }
@@ -194,14 +162,7 @@ function Store() {
   )
 
   const currentModel = createMemo(() => {
-    const model = store.sessionSettings.model
-    return model
-    // const tk = (store.inputContentToken + store.contextToken) / 1000
-    // if (model === "gpt-3.5") {
-    //   return models["gpt-3.5"][tk < 3.5 ? "4k" : "16k"]
-    // } else {
-    //   return models["gpt-4"][tk < 7 ? "8k" : "32k"]
-    // }
+    return store.sessionSettings.model
   })
 
   const inputContentToken$ = createMemo(() =>
@@ -305,5 +266,5 @@ function countTokensDollar(
 ) {
   const tk = tokens / 1000
   // @ts-ignore
-  return modelFee[model][io] * tk
+  return models[model][io] * tk
 }
