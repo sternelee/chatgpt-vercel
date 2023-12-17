@@ -64,7 +64,6 @@ export default function ({
       }
       if (file) {
         const img = await blobToBase64(file)
-        console.log(img)
         setStore("inputImage", img)
       }
     })

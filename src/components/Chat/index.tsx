@@ -115,15 +115,15 @@ export default function () {
         const content = store.inputImage
           ? [
               {
+                type: "text",
+                text: inputValue
+              },
+              {
                 type: "image_url",
                 image_url: {
                   url: store.inputImage,
-                  detail: "low"
+                  detail: "auto"
                 }
-              },
-              {
-                type: "text",
-                text: inputValue
               }
             ]
           : inputValue

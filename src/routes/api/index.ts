@@ -61,7 +61,8 @@ export async function POST({ request }: APIEvent) {
     } = await request.json()
     const { messages, key = localKey, temperature, password, model } = body
 
-    if (passwordSet && password !== passwordSet) {
+    if (!body.key && passwordSet && password !== passwordSet) {
+      // 没有传key时才校验管理密码
       throw new Error("密码错误，请联系网站管理员。")
     }
 
