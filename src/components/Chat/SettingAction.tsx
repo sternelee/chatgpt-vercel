@@ -1,5 +1,5 @@
 import { toBlob, toJpeg } from "html-to-image"
-import { Match, Show, Switch, type JSXElement } from "solid-js"
+import { Match, Show, Switch, type JSXElement, createSignal } from "solid-js"
 import { createStore } from "solid-js/store"
 import { defaultEnv } from "~/env"
 import { clickOutside } from "~/hooks"
@@ -12,7 +12,8 @@ import {
   generateId,
   getSession,
   isMobile,
-  setSession
+  setSession,
+  blobToBase64
 } from "~/utils"
 import { Selector, Switch as SwitchButton } from "../Common"
 import { useNavigate } from "solid-start"
@@ -45,6 +46,7 @@ const roleIcons: Record<FakeRoleUnion, string> = {
 export default function SettingAction() {
   const { store, setStore } = RootStore
   const navigator = useNavigate()
+  const [uploadPicture, setUploadPicture] = createSignal<HTMLInputElement>()
   function clearSession() {
     setStore("messageList", messages =>
       messages.filter(k => k.type === "locked")
@@ -221,6 +223,29 @@ export default function SettingAction() {
             icon="i-carbon:settings-services"
             label="对话设置"
           />
+          {store.currentModel.includes("vision") && (
+            <>
+              <input
+                type="file"
+                accept="image/*"
+                ref={el => setUploadPicture(el)}
+                style="width:0;visibility:hidden;"
+                onChange={async e => {
+                  if (e.target.files?.length === 0) return
+                  const file = e.target.files![0]
+                  const url = await blobToBase64(file)
+                  setStore({ inputImage: url })
+                }}
+              />
+              <ActionItem
+                onClick={() => {
+                  uploadPicture()?.click()
+                }}
+                icon="i-carbon:cloud-upload"
+                label="上传图片"
+              />
+            </>
+          )}
         </div>
         <Switch
           fallback={

@@ -20,7 +20,7 @@ export default function () {
   const [searchParams] = useSearchParams()
   const q = searchParams[SearchParamKey]
   const { store, setStore } = RootStore
-  onMount(() => {
+  onMount(async () => {
     createResizeObserver(containerRef, ({ width }, el) => {
       if (el === containerRef) setContainerWidth(`${width}px`)
     })

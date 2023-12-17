@@ -201,6 +201,7 @@ export default function ({
               <img
                 src={store.inputImage}
                 onClick={() => setStore("inputImage", "")}
+                title="点击删除"
                 style={{
                   width: height() + "px",
                   height: height() + "px",
