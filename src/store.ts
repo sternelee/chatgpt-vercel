@@ -57,7 +57,7 @@ export const defaultMessage: ChatMessage = {
   type: "default"
 }
 
-const models = {} satisfies {
+const ModelCostMap = {} satisfies {
   [key in Model]: {
     input: number
     output: number
@@ -66,9 +66,9 @@ const models = {} satisfies {
 
 Models.data.forEach(v => {
   // @ts-ignore
-  models[v.id + `${v.pricing.prompt === 0 ? "(free)" : ""}`] = {
-    input: v.pricing.prompt,
-    output: v.pricing.completion
+  ModelCostMap[v.id + `${v.pricing.prompt === 0 ? "(free)" : ""}`] = {
+    input: Number(v.pricing.prompt),
+    output: Number(v.pricing.completion)
   }
 })
 
@@ -110,14 +110,16 @@ function Store() {
     store.sessionSettings.continuousDialogue
       ? store.messageList.filter(
           (k, i, _) =>
-            (k.role === "assistant" &&
+            (["assistant", "system"].includes(k.role) &&
               k.type !== "temporary" &&
               _[i - 1]?.role === "user") ||
             (k.role === "user" &&
               _[i + 1]?.role !== "error" &&
               _[i + 1]?.type !== "temporary")
         )
-      : store.messageList.filter(k => k.type === "locked")
+      : store.messageList.filter(
+          k => k.role === "system" || k.type === "locked"
+        )
   )
 
   const throttleCountInputContent = throttle((content: string) => {
@@ -266,5 +268,5 @@ function countTokensDollar(
 ) {
   const tk = tokens / 1000
   // @ts-ignore
-  return models[model][io] * tk
+  return ModelCostMap[model][io] * tk
 }

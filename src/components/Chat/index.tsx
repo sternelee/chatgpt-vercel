@@ -74,7 +74,16 @@ export default function () {
     const inputValue = value ?? store.inputContent
     if (!inputValue) return
     setStore("inputContent", "")
-    if (fakeRole === "assistant") {
+    if (fakeRole === "system") {
+      // TODO: 更换system
+      setStore("messageList", k => [
+        {
+          role: "system",
+          content: inputValue
+        },
+        ...k
+      ])
+    } else if (fakeRole === "assistant") {
       setActionState("fakeRole", "normal")
       if (
         store.messageList.at(-1)?.role !== "user" &&
@@ -127,11 +136,12 @@ export default function () {
               }
             ]
           : inputValue
+        // @ts-ignore
         setStore("messageList", k => [
           ...k,
           {
             role: "user",
-            content: inputValue
+            content
           }
         ])
         if (store.remainingToken < 0) {

@@ -23,9 +23,9 @@ export default function MessageItem(props: Props) {
   const [renderedMarkdown, setRenderedMarkdown] = createSignal("")
   const roleClass = {
     error: "bg-gradient-to-r from-red-400 to-red-700",
-    system: "bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300",
     user: "bg-gradient-to-r from-red-300 to-blue-700 ",
-    assistant: "bg-gradient-to-r from-yellow-300 to-red-700 "
+    assistant: "bg-gradient-to-r from-yellow-300 to-red-700 ",
+    system: "bg-gradient-to-r from-yellow-100 to-red-800 "
   }
 
   function copy() {
@@ -134,15 +134,10 @@ export default function MessageItem(props: Props) {
         <div
           class="message prose prose-slate break-all dark:prose-invert dark:text-slate break-words overflow-hidden"
           style="max-width: 100%"
-          innerHTML={renderedMarkdown()
-            .replace(
-              /\s*Vercel\s*/g,
-              `<a href="http://vercel.com/?utm_source=busiyi&utm_campaign=oss" style="border-bottom:0;margin-left: 6px">${vercel}</a>`
-            )
-            .replace(
-              /\s*OpenRouter\s*/g,
-              `<a href="https://openrouter.ai/" style="border-bottom:0;margin-left: 6px">${openai}</a>`
-            )}
+          innerHTML={renderedMarkdown().replace(
+            /\s*OpenRouter\s*/g,
+            `<a href="https://openrouter.ai/" style="border-bottom:0;margin-left: 6px">${openai}</a>`
+          )}
         />
         <Show when={!props.hiddenAction}>
           <MessageAction

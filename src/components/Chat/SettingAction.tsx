@@ -36,8 +36,9 @@ const imgIcons: Record<ImgStatusUnion, string> = {
   error: "i-carbon:warning-alt text-red-6 dark:text-red"
 }
 
-export type FakeRoleUnion = "assistant" | "user" | "normal"
+export type FakeRoleUnion = "system" | "assistant" | "user" | "normal"
 const roleIcons: Record<FakeRoleUnion, string> = {
+  system: "i-ri:robot-2-fill bg-gradient-to-r from-yellow-300 to-red-700 ",
   assistant: "i-ri:android-fill bg-gradient-to-r from-yellow-300 to-red-700 ",
   normal: "i-ri:user-3-line",
   user: "i-ri:user-3-fill bg-gradient-to-r from-red-300 to-blue-700 "
@@ -253,12 +254,24 @@ export default function SettingAction() {
               <ActionItem
                 onClick={() => {
                   setActionState("fakeRole", k => {
-                    const _ = ["normal", "user", "assistant"] as FakeRoleUnion[]
+                    const _ = [
+                      "normal",
+                      "user",
+                      "system",
+                      "assistant"
+                    ] as FakeRoleUnion[]
                     return _[(_.indexOf(k) + 1) % _.length]
                   })
                 }}
                 icon={roleIcons[actionState.fakeRole]}
-                label="伪装角色"
+                label={
+                  {
+                    system: "系统角色",
+                    assistant: "智能AI",
+                    user: "普通用户",
+                    normal: "伪装角色"
+                  }[actionState.fakeRole]
+                }
               />
               <ActionItem
                 onClick={async () => {
